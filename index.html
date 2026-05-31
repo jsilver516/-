@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사회복지학전공 연구자 홈페이지</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header class="top-header">
+    <div class="logo-area">
+      <div class="logo-mark">SW</div>
+      <div>
+        <h1>Social Welfare Researcher</h1>
+        <p>사회복지학전공 연구자 홈페이지</p>
+      </div>
+    </div>
+
+    <form
+      class="scholar-search"
+      action="https://scholar.google.com/scholar"
+      method="get"
+      target="_blank"
+    >
+      <input
+        type="text"
+        name="q"
+        placeholder="Google Scholar 논문 검색"
+      />
+      <button type="submit">검색</button>
+    </form>
+
+    <div class="clock-box">
+      <span id="dateText"></span>
+      <strong id="clockText"></strong>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="home">홈</button>
+    <button class="tab-btn" data-tab="news">뉴스</button>
+    <button class="tab-btn" data-tab="weather">날씨</button>
+    <button class="tab-btn" data-tab="fortune">하루 운세</button>
+    <button class="tab-btn" data-tab="mail">메일</button>
+  </nav>
+
+  <main>
+    <!-- 홈 -->
+    <section id="home" class="tab-content active">
+      <section class="profile-banner">
+        <div class="banner-overlay"></div>
+
+        <div class="banner-text">
+          <span class="mini-label">Pukyong National University</span>
+          <h2>아자 아자 파이팅</h2>
+          <p>Department of Social Welfare</p>
+          <div class="banner-buttons">
+            <a href="https://scholar.google.com" target="_blank">논문 검색</a>
+            <a href="#todoArea">오늘 할 일</a>
+          </div>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+          alt="청량한 하늘 사진"
+          class="banner-image"
+        />
+      </section>
+
+      <section class="quick-dashboard">
+        <article>
+          <span>오늘의 목표</span>
+          <strong>자료 찾기 · 정리 · 제출</strong>
+        </article>
+        <article>
+          <span>추천 루틴</span>
+          <strong>뉴스 10분 + 논문 1편</strong>
+        </article>
+        <article>
+          <span>연구 키워드</span>
+          <strong>돌봄 · 복지 · 지역사회</strong>
+        </article>
+      </section>
+
+      <section class="section-card">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Weather</p>
+            <h2>실시간 날씨 위젯</h2>
+          </div>
+          <a
+            href="https://www.accuweather.com/ko/kr/busan/222888/weather-forecast/222888"
+            target="_blank"
+            class="small-link"
+          >
+            AccuWeather 바로가기 →
+          </a>
+        </div>
+
+        <div class="city-buttons">
+          <button class="city-btn active" data-city="busan">부산</button>
+          <button class="city-btn" data-city="gimhae">김해</button>
+          <button class="city-btn" data-city="seoul">서울</button>
+        </div>
+
+        <div id="weatherNow" class="weather-now">
+          날씨 정보를 불러오는 중입니다.
+        </div>
+
+        <div id="forecastCards" class="forecast-row"></div>
+
+        <div class="chart-box">
+          <canvas id="tempChart"></canvas>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">News</p>
+            <h2>오늘의 주요 뉴스</h2>
+          </div>
+          <a
+            href="https://scholar.google.com"
+            target="_blank"
+            class="small-link"
+          >
+            Google Scholar에서 더 검색 →
+          </a>
+        </div>
+
+        <div class="news-grid">
+          <a
+            class="news-card"
+            href="https://search.naver.com/search.naver?where=news&query=한국%20주요%20뉴스"
+            target="_blank"
+          >
+            <span class="tag blue">한국</span>
+            <h3>한국 주요 뉴스</h3>
+            <p>국내 사회, 정책, 복지 흐름을 확인합니다.</p>
+          </a>
+
+          <a
+            class="news-card"
+            href="https://search.naver.com/search.naver?where=news&query=미국%20주요%20뉴스"
+            target="_blank"
+          >
+            <span class="tag green">미국</span>
+            <h3>미국 주요 뉴스</h3>
+            <p>미국 정책, 복지, 사회 변화 흐름을 살펴봅니다.</p>
+          </a>
+
+          <a
+            class="news-card"
+            href="https://search.naver.com/search.naver?where=news&query=유럽%20복지%20뉴스"
+            target="_blank"
+          >
+            <span class="tag orange">유럽</span>
+            <h3>유럽 복지 뉴스</h3>
+            <p>돌봄, 가족정책, 사회보장 사례를 확인합니다.</p>
+          </a>
+
+          <a
+            class="news-card"
+            href="https://search.naver.com/search.naver?where=news&query=사회복지%20뉴스"
+            target="_blank"
+          >
+            <span class="tag purple">사회복지</span>
+            <h3>사회복지 뉴스</h3>
+            <p>사회복지 현장과 제도 변화를 확인합니다.</p>
+          </a>
+
+          <a
+            class="news-card"
+            href="https://scholar.google.com/scholar?q=사회복지학"
+            target="_blank"
+          >
+            <span class="tag pink">심리학</span>
+            <h3>심리학 연구</h3>
+            <p>상담, 정서, 인간행동 관련 논문을 검색합니다.</p>
+          </a>
+
+          <a
+            class="news-card"
+            href="https://scholar.google.com/scholar?q=경영학%20조직관리"
+            target="_blank"
+          >
+            <span class="tag mint">경영학</span>
+            <h3>경영학 연구</h3>
+            <p>조직, 리더십, 인적자원관리 논문을 검색합니다.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="home-tools-grid">
+        <article class="section-card" id="todoArea">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">To-Do</p>
+              <h2>메모장 / To-Do 리스트</h2>
+            </div>
+          </div>
+
+          <div class="todo-input">
+            <input id="todoInput" type="text" placeholder="오늘 할 일을 입력하세요" />
+            <button id="addTodoBtn">추가</button>
+          </div>
+
+          <ul id="todoList" class="todo-list"></ul>
+
+          <textarea
+            id="memoBox"
+            class="memo-box"
+            placeholder="간단한 메모를 적어두세요."
+          ></textarea>
+        </article>
+
+        <article class="section-card">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Quote</p>
+              <h2>오늘의 명언</h2>
+            </div>
+          </div>
+
+          <div class="quote-box">
+            <p id="quoteText"></p>
+          </div>
+
+          <div class="music-box">
+            <h3>배경음악 플레이어</h3>
+            <p>원하는 mp3 링크를 넣으면 재생할 수 있습니다.</p>
+            <audio controls>
+              <source src="" type="audio/mpeg" />
+              브라우저가 오디오를 지원하지 않습니다.
+            </audio>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-card">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Calendar</p>
+            <h2>학사일정 / 과제 마감 캘린더</h2>
+          </div>
+        </div>
+
+        <div class="calendar-form">
+          <input id="scheduleTitle" type="text" placeholder="일정 또는 과제명" />
+          <input id="scheduleDate" type="date" />
+          <button id="addScheduleBtn">등록</button>
+        </div>
+
+        <ul id="scheduleList" class="schedule-list"></ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Bookmarks</p>
+            <h2>즐겨찾기 링크 모음</h2>
+          </div>
+        </div>
+
+        <div class="bookmark-grid">
+          <a href="https://www.pknu.ac.kr" target="_blank">부경대학교</a>
+          <a href="https://portal.pknu.ac.kr" target="_blank">학교 포털</a>
+          <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+          <a href="https://www.mohw.go.kr" target="_blank">보건복지부</a>
+          <a href="https://www.bokjiro.go.kr" target="_blank">복지로</a>
+          <a href="https://www.riss.kr" target="_blank">RISS</a>
+        </div>
+      </section>
+    </section>
+
+    <!-- 뉴스 탭 -->
+    <section id="news" class="tab-content">
+      <section class="section-card">
+        <p class="eyebrow">News Room</p>
+        <h2>뉴스 검색실</h2>
+        <p class="sub-text">
+          관심 분야를 누르면 네이버 뉴스 또는 Google Scholar 검색으로 연결됩니다.
+        </p>
+
+        <div class="news-grid large">
+          <a href="https://search.naver.com/search.naver?where=news&query=한국%20복지정책" target="_blank" class="news-card">
+            <span class="tag blue">한국</span>
+            <h3>한국 복지정책</h3>
+            <p>국내 복지정책, 돌봄, 저출산 정책을 확인합니다.</p>
+          </a>
+
+          <a href="https://search.naver.com/search.naver?where=news&query=미국%20사회복지" target="_blank" class="news-card">
+            <span class="tag green">미국</span>
+            <h3>미국 사회복지</h3>
+            <p>미국 복지제도와 사회보장 이슈를 확인합니다.</p>
+          </a>
+
+          <a href="https://search.naver.com/search.naver?where=news&query=유럽%20돌봄정책" target="_blank" class="news-card">
+            <span class="tag orange">유럽</span>
+            <h3>유럽 돌봄정책</h3>
+            <p>유럽의 돌봄, 가족, 고령화 정책을 살펴봅니다.</p>
+          </a>
+
+          <a href="https://scholar.google.com/scholar?q=사회복지학%20돌봄%20정책" target="_blank" class="news-card">
+            <span class="tag purple">사회복지학</span>
+            <h3>사회복지학 논문</h3>
+            <p>사회복지학 연구 자료를 검색합니다.</p>
+          </a>
+
+          <a href="https://scholar.google.com/scholar?q=심리학%20상담%20청소년" target="_blank" class="news-card">
+            <span class="tag pink">심리학</span>
+            <h3>심리학 논문</h3>
+            <p>정서, 상담, 청소년 관련 논문을 검색합니다.</p>
+          </a>
+
+          <a href="https://scholar.google.com/scholar?q=경영학%20조직관리%20리더십" target="_blank" class="news-card">
+            <span class="tag mint">경영학</span>
+            <h3>경영학 논문</h3>
+            <p>조직관리와 리더십 연구 자료를 확인합니다.</p>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <!-- 날씨 탭 -->
+    <section id="weather" class="tab-content">
+      <section class="section-card">
+        <p class="eyebrow">Weather Detail</p>
+        <h2>도시별 날씨 확인</h2>
+        <p class="sub-text">
+          홈 화면의 날씨 위젯과 같은 데이터를 사용합니다.
+        </p>
+
+        <div class="city-buttons">
+          <button class="city-btn active" data-city="busan">부산</button>
+          <button class="city-btn" data-city="gimhae">김해</button>
+          <button class="city-btn" data-city="seoul">서울</button>
+        </div>
+
+        <div id="weatherNowSub" class="weather-now"></div>
+      </section>
+    </section>
+
+    <!-- 하루 운세 탭 -->
+    <section id="fortune" class="tab-content">
+      <section class="section-card fortune-card">
+        <p class="eyebrow">Daily Fortune</p>
+        <h2>하루 운세</h2>
+        <p id="fortuneText" class="fortune-text"></p>
+        <button id="fortuneBtn">오늘의 운세 다시 보기</button>
+      </section>
+    </section>
+
+    <!-- 메일 탭 -->
+    <section id="mail" class="tab-content">
+      <section class="section-card mail-card">
+        <p class="eyebrow">Mail</p>
+        <h2>메일 바로가기</h2>
+        <p class="sub-text">
+          자주 쓰는 메일과 학교 관련 연락을 빠르게 열 수 있습니다.
+        </p>
+
+        <div class="mail-grid">
+          <a href="https://mail.google.com" target="_blank">Gmail 열기</a>
+          <a href="mailto:qkrwjddms0516@gmail.com">내 메일 쓰기</a>
+          <a href="https://www.pknu.ac.kr" target="_blank">학교 홈페이지</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Social Welfare Researcher Homepage</p>
+    <p>밝은 네이비 · 라이트 그레이 · 그라데이션 디자인</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
